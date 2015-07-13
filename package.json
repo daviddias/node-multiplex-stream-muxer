@@ -1,0 +1,40 @@
+{
+  "name": "multiplex-stream-muxer",
+  "version": "0.0.0",
+  "description": "Abstraction on top of multiplex, implementing the abstract-stream-muxer interface",
+  "main": "src/index.js",
+  "scripts": {
+    "codestyle": "./node_modules/.bin/standard --format",
+    "test": "node tests/test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/diasdavid/node-multiplex-stream-muxer.git"
+  },
+  "keywords": [
+    "stream",
+    "multiplexing",
+    "tests",
+    "interface",
+    "mux",
+    "muxing"
+  ],
+  "author": "David Dias <daviddias@ipfs.io>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/diasdavid/node-multiplex-stream-muxer/issues"
+  },
+  "homepage": "https://github.com/diasdavid/node-multiplex-stream-muxer",
+  "pre-commit": [
+    "codestyle",
+    "test"
+  ],
+  "devDependencies": {
+    "precommit-hook": "^3.0.0",
+    "standard": "^4.5.3",
+    "tape": "^4.0.0"
+  },
+  "dependencies": {
+    "multiplex": "^6.2.2"
+  }
+}
