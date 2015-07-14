@@ -19,7 +19,7 @@ var MultiplexStreamMuxer = require('multiplex-stream-muxer')
 
 var dialer = new MultiplexStreamMuxer()
 
-var connDialer = dialer.attach(pair, false)
+var connDialer = dialer.attach(socket, false)
 
 connDialer.dialStream(function (err, stream) {
   t.ifError(err, 'Should not throw')
@@ -33,9 +33,21 @@ var MultiplexStreamMuxer = require('multiplex-stream-muxer')
 
 var listener = new MultiplexStreamMuxer()
 
-var connListener = listener.attach(pair.other, true)
+var connListener = listener.attach(socket, true)
 
 connListener.on('stream', function (stream) {
   t.pass('got stream')
 })
+```
+
+You can also follow the net.connect pattern by listening to the `ready` and `error` events
+
+```JavaScript
+var stream = connListener.dialStream()
+
+stream.on('ready', function () {})
+
+stream.on('error', function (err) {})
+
+stream.write('buffer this') // this write will be buffered untill the socket is ready to transmit
 ```
