@@ -20,7 +20,16 @@ function Connection (transport, startingId) {
   self.dialStream = function (callback) {
     var stream = self.mpx.createStream(self.nextId)
     self.nextId = self.nextId + 2
-    callback(null, stream)
+
+    setImmediate(function () {
+      if (callback) {
+        callback(null, stream)
+      } else {
+        stream.emit('ready')
+      }
+    })
+
+    return stream
   }
 
   self.mpx = multiplex(function onStream (stream, id) {
