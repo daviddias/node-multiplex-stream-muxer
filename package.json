@@ -30,6 +30,7 @@
     "test"
   ],
   "devDependencies": {
+    "abstract-stream-muxer": "^0.1.0",
     "precommit-hook": "^3.0.0",
     "standard": "^4.5.3",
     "tape": "^4.0.0"
